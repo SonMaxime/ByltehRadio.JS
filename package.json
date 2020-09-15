@@ -1,7 +1,7 @@
 {
   "name": "BylethRadioJS",
   "version": "1.0.0",
-  "description": "",
+  "description": "A french discord.js radio that can play some music 24/24-7/7.",
   "main": "index.js",
   "dependencies": {
     "-": "0.0.1",
