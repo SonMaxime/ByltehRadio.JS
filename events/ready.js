@@ -1,4 +1,4 @@
-odule.exports = async client => {
+module.exports = async client => {
     console.log('connecté');
 
 
