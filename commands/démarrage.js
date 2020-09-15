@@ -1,5 +1,5 @@
 const ytdl = require('ytdl-core-discord');
-const queue = require('../listas.json');
+const queue = require('../liste.json');
 const config = require('../json/config.json');
 
 const YouTube = require('simple-youtube-api');
