@@ -23,7 +23,7 @@ const start = async (client, message) => {
         let musicfs = song[client.page];
         var resultats = await youtube.getVideo(musicfs.url);
 
-     return playSong(client, message, resultado)
+     return playSong(client, message, resultats)
 
     } else {
     var resultats = await youtube.getVideo(musicfs.url);
@@ -40,7 +40,7 @@ const playSong = async (client, message, resultats) => {
     const conn = await canal.join()
 
     const song = {
-        url: `https://www.youtube.com/watch?v=${resultado.id}`
+        url: `https://www.youtube.com/watch?v=${resultats.id}`
     };
 
     const musique = {
@@ -50,8 +50,8 @@ const playSong = async (client, message, resultats) => {
         volume: 10
     };
     musique.songs.push(song);
-    let musicnow = musica.songs[0];
-    musique.dispatcher = await musica.connection.play(await ytdl(musicnow.url, { highWaterMark: 1 << 25, filter: "audioonly" }), {
+    let musicnow = musique.songs[0];
+    musique.dispatcher = await musique.connection.play(await ytdl(musicnow.url, { highWaterMark: 1 << 25, filter: "audioonly" }), {
         type: "opus",
       });
 
