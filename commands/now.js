@@ -1,7 +1,7 @@
 const MessageEmbed = require('discord.js');
 
 module.exports.run = (client, message) => {
-    const queue = require('../liste.json');
+    const queue = require('../json/liste.json');
 
     let song = queue.liste
     
