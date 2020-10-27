@@ -1,42 +1,30 @@
 const ytdl = require('ytdl-core-discord');
-const queue = require('../liste.json');
+const queue = require('../json/liste.json');
 const config = require('../json/config.json');
 
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube(config.keyYT);
+const youtube = new YouTube("AIzaSyAhPLtjqee-H0lINdBEP5a_2rO6UuRtICM");
 
 module.exports.run = (client, message) => {
+    message.delete();
 
-    if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Vous n'avez pas les perms.");
-    message.channel.send('Démarrage.')
+    if(!message.member.hasPermission("KICK_MEMBERS")) return;
     start(client, message)
 }
 
 const start = async (client, message) => {
-
-    let song = queue.liste
-    
+    let song = queue.liste;
     let musicfs = song[client.page];
-    
-    if(musicfs.loop1) {
-        client.page = 0;
-        let musicfs = song[client.page];
-        var resultats = await youtube.getVideo(musicfs.url);
-
-     return playSong(client, message, resultats)
-
-    } else {
+    client.page = 0;
     var resultats = await youtube.getVideo(musicfs.url);
 
-    playSong(client, message, resultats)
-    }
+    return playSong(client, message, resultats)
 }
 
 const playSong = async (client, message, resultats) => {
-    
-    const canal = message.guild.channels.cache.get(`Channel_ID`);
 
-    if (!canal) return message.channel.send("Vérifiez que le canal de connection possède le bon ID.");
+    const canal = message.guild.channels.cache.get(`770684296175943712`);
+
     const conn = await canal.join()
 
     const song = {
@@ -59,7 +47,7 @@ const playSong = async (client, message, resultats) => {
     });
     
     musique.dispatcher.on('finish', () => {
-        client.page++;
+        client.page = 0;
         start(client, message)
     });
 
