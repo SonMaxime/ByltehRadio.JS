@@ -3,7 +3,7 @@ const queue = require('../json/liste.json');
 const config = require('../json/config.json');
 
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyAhPLtjqee-H0lINdBEP5a_2rO6UuRtICM");
+const youtube = new YouTube("ytApiKey");
 
 module.exports.run = (client, message) => {
     message.delete();
@@ -23,7 +23,7 @@ const start = async (client, message) => {
 
 const playSong = async (client, message, resultats) => {
 
-    const canal = message.guild.channels.cache.get(`770684296175943712`);
+    const canal = message.guild.channels.cache.get(`salon de la radio`);
 
     const conn = await canal.join()
 
